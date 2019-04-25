@@ -1,0 +1,24 @@
+<ul class="pagination pagination-sm no-margin">
+
+    <li *ngIf="pages.first != ''">
+        <a (click)="loadPage(pages.first)">&laquo;&laquo;</a>
+    </li>
+
+    <li *ngIf="pages.previous">
+        <a (click)="loadPage(pages.previous)">&laquo;</a>
+    </li>
+
+    <li *ngFor="let page of pages.pages">
+        <a (click)="loadPage(page.numPage)">
+            {{ page.numPage }}
+        </a>
+    </li>
+
+    <li *ngIf="pages.next != ''">
+        <a (click)="loadPage(pages.next)">&raquo;</a>
+    </li>
+
+    <li *ngIf="pages.last != ''">
+        <a (click)="loadPage(pages.last)">&raquo;&raquo;</a>
+    </li>
+</ul>

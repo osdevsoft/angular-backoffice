@@ -1,0 +1,33 @@
+<body *ngIf="logged" class="hold-transition skin-blue sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+        <app-header></app-header>
+
+        <app-navbar></app-navbar>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <router-outlet></router-outlet>
+            <!-- Main content -->
+        </div>
+    </div>
+
+    <!-- Bootstrap 3.3.7 -->
+    <script src="/assets/adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/assets/adminlte/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="/assets/adminlte/dist/js/demo.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.sidebar-menu').tree();
+        })
+    </script>
+</body>
+
+<body *ngIf="!logged" >
+<router-outlet></router-outlet>
+</body>

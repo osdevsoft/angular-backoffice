@@ -1,0 +1,10 @@
+MVP
+----
+[>] buscador (ha dejado de funcar :S
+[ ] paginacion
+[X] contenidos relacionados
+
+
+fase 1
+------
+roles

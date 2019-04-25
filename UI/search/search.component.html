@@ -1,0 +1,18 @@
+<div class="box box-primary">
+
+    <div class="box-header with-border">
+        <i class="fa fa-search" (click)="toggleView()"></i><h3 class="box-title">Search Box</h3>
+    </div>
+
+    <form *ngIf="expanded" id="detail_submit" (ngSubmit)="postData(form)" #form="ngForm">
+        <div class="box box-body">
+            <div *ngFor="let field of searchFields" class="form-group">
+                <entity-form-element [editableItem]="editableItem" [field]="field" [editableFields]="searchFields"></entity-form-element>
+            </div>
+        </div>
+
+        <div class="box-footer">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+</div>

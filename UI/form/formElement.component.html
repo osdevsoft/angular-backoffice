@@ -1,0 +1,13 @@
+<label #ref (click)="fieldLabelClicked(ref.id)" id="{{ field }}">
+    {{ field | kanicase:'!!!11' }}
+</label>
+<br />
+
+<div [ngSwitch]="editableFields.indexOf(field)">
+
+    <span *ngSwitchCase="-1">{{ item[field] }}</span>
+
+    <input *ngSwitchDefault type="text" class="form-control" name="{{ field }}" placeholder="{{ field }}" #{{field}}="ngModel" [(ngModel)]="editableItem[field]">
+
+
+</div>

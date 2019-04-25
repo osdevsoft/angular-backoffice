@@ -1,0 +1,17 @@
+<section class="content-header">
+    <!--<h1>{{ entity }} :: Detail</h1>-->
+</section>
+
+<app-loading *ngIf="loading"></app-loading>
+
+<section class="content" *ngIf="!loading">
+
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Content</h3>
+        </div>
+
+        <entity-form-container [entity]="entity" [fields]="fields" [item]="item"></entity-form-container>
+    </div>
+
+</section>

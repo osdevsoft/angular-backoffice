@@ -1,0 +1,127 @@
+{
+  "listing": {
+    "itemsPerPage": 10,
+    "pagesPerPage": 5
+  },
+
+  "entities": {
+
+    "user": {
+      "niceName": "user",
+      "display": false,
+      "fields": {
+        "inSearch": [
+          "name",
+          "email"
+        ],
+        "inList": [
+          "name",
+          "email"
+        ],
+        "inDetail": [
+          "name",
+          "email",
+          "password"
+        ],
+        "editable": [
+          "name",
+          "email"
+        ]
+      }
+    },
+
+    "post": {
+      "niceName": "post",
+      "display": false,
+      "fields": {
+        "inSearch": [
+          "title",
+          "content"
+        ],
+        "inList": [
+          "title",
+          "author.name",
+          "content"
+        ],
+        "inDetail": [
+          "title",
+          "content",
+          "author.name"
+        ],
+        "editable": [
+          "content",
+          "author.name"
+        ]
+      },
+      "referencedEntities": [
+        "author"
+      ]
+
+    },
+
+    "author": {
+      "niceName": "author",
+      "display": false,
+      "fields": {
+        "inSearch": [
+          "name",
+          "email"
+        ],
+        "inList": [
+          "name",
+          "email"
+        ],
+        "inDetail": [
+          "name",
+          "email"
+        ],
+        "editable": [
+          "name",
+          "email"
+        ]
+      }
+    },
+
+    "comment": {
+      "niceName": "comment",
+      "display": false,
+      "fields": {
+        "inSearch": [
+          "content"
+        ],
+        "inList": [
+          "content"
+        ],
+        "inDetail": [
+          "content"
+        ],
+        "editable": [
+          "content"
+        ]
+      }
+    },
+
+    "visitor": {
+      "niceName": "visitor",
+      "display": false,
+      "fields": {
+        "inSearch": [
+          "name",
+          "email"
+        ],
+        "inList": [
+          "name",
+          "email"
+        ],
+        "inDetail": [
+          "name",
+          "email"
+        ],
+        "editable": [
+          "name",
+          "email"
+        ]
+      }
+    }
+  }
+}

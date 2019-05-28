@@ -19,7 +19,7 @@ export class AuthService
 
     async login(user, password)
     {
-        user = await this.getUserByEmail(user);
+        user = await this.checkUser(user, password);
         if(user == null) {
             return false;
         }
@@ -30,9 +30,15 @@ export class AuthService
 
     }
 
-    logout()
+    logout(message = null)
     {
         this.session.logout();
+
+        let location = '/#';
+        if(message != null) {
+            location += '?alert_message=' + message;
+        }
+        window.location.href = location;
     }
 
     canActivate()
@@ -44,21 +50,20 @@ export class AuthService
         return true;
     }
 
-    async getUserByEmail(email)
+    async checkUser(user, password)
     {
         // TODO: make sync
-        let user= await this.repository.fetch('user?search_fields[email]=' + email).toPromise()
-            .then(
-            (data:any) => {
-                    if(data.total_items == 0) {
-                        this.data = null;
-                    } else {
-                        this.data = data.items[0];
-                        //todo: mock
-                        this.session.login(this.data);
-                    }
-                }
-            );
+        let data = {
+            'username': user,
+            'password': password
+        };
+        let result:any = await this.repository.post('auth/login', data, false)
+        if(typeof result.authToken == "undefined") {
+            this.data = null;
+        } else {
+            this.data = result;
+            this.session.login(this.data);
+        }
 
         return this.data;
 

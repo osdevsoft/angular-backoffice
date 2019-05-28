@@ -132,6 +132,11 @@ export class ListComponent {
                 }
 
                 this.loading = false;
+            },
+            error => {
+                if(error.status == 401) {
+                    this.auth.logout('Session expired');
+                }
             }
         );
 

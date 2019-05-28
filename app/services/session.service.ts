@@ -8,6 +8,8 @@ export class SessionService
 
     private data:any;
 
+    private authToken:any;
+
     constructor(
     )
     {
@@ -20,6 +22,7 @@ export class SessionService
         if(session_data != null) {
             this.logged = session_data.logged;
             this.data = session_data.data;
+            this.authToken = session_data.authToken;
         }
 
     }
@@ -27,7 +30,8 @@ export class SessionService
     login(data)
     {
         this.logged = true;
-        this.data = data;
+        this.data = data.user;
+        this.authToken = data.authToken;
         this.save();
     }
 
@@ -35,6 +39,7 @@ export class SessionService
     {
         this.logged = false;
         this.data = null;
+        this.authToken = null;
         this.save();
     }
 
@@ -42,7 +47,8 @@ export class SessionService
     {
         let session_data:object = {
             'logged': this.logged,
-            'data': this.data
+            'data': this.data,
+            'authToken': this.authToken
         };
         localStorage.setItem('session', JSON.stringify(session_data));
     }
@@ -56,5 +62,10 @@ export class SessionService
     getData()
     {
         return this.data;
+    }
+
+    getAuthToken()
+    {
+        return this.authToken;
     }
 }

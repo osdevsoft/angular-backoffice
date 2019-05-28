@@ -29,8 +29,9 @@ export class FormContainerComponent {
     async postData(form: NgForm)
     {
         this.loading = true;
-        let res = await this.repository.save(this.entity, this.editableItem);
+        let res = await this.repository.post(this.entity, this.editableItem);
         this.item.uuid = res;
+        this.editableItem.uuid = res;
         this.loading = false;
     }
 

@@ -16,9 +16,9 @@ export class HeaderComponent {
 
 
 
-    logout()
+    logout(message = null)
     {
-        this.auth.logout();
+        this.auth.logout(message);
     }
 
 

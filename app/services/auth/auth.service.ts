@@ -57,7 +57,7 @@ export class AuthService
             'username': user,
             'password': password
         };
-        let result:any = await this.repository.post('auth/login', data, false)
+        let result:any = await this.repository.post('auth/login', data, false);
         if(typeof result.authToken == "undefined") {
             this.data = null;
         } else {

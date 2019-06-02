@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { map } from "rxjs/operators";
 
 import {RepositoryService} from "../Infrastructure/Repository/repository.service";
+import {query} from "@angular/animations";
 
 @Injectable()
 export class ElementService
@@ -19,7 +20,7 @@ export class ElementService
     {
         let query_string = entity + '/' + uuid;
         if(referencedEntities.length != 0) {
-            query_string += '?referenced_entities=' + referencedEntities.join(',');
+            query_string += '?referenced_entities=' + referencedEntities.join(',') + "&referenced_entities_contents=" + referencedEntities.join(',');
         }
         return this.repository.fetch(query_string)
             .pipe(

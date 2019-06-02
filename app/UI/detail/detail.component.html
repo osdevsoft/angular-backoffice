@@ -12,7 +12,13 @@
         <div class="box-header with-border">
             <h3 class="box-title">Content information</h3>
         </div>
-        <entity-form-container [entity]="entity" [fields]="fields" [item]="item" [editableItem]="editableItem"></entity-form-container>
+        <entity-form-container
+                [entity]="entity"
+                [fields]="fields"
+                [item]="item"
+                [editableItem]="editableItem"
+                [referencedEntitiesContents]="referencedEntitiesContents"
+        ></entity-form-container>
     </div>
 
 

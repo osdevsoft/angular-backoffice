@@ -17,6 +17,7 @@ export class FormContainerComponent {
     @Input() item: any = {};
     @Input() editableItem:any = {};
     @Input() entity: string = '';
+    @Input() referencedEntitiesContents: any = '';
 
     public loading: boolean = false;
 

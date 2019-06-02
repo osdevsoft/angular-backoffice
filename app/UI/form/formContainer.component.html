@@ -8,7 +8,13 @@
 
         <div *ngFor="let field of fields.inDetail" class="form-group">
             <!--<input type="text" name="{{ field }}" class="form-control" placeholder="Email" #{{field}}="ngModel" [(ngModel)]="data[field]">-->
-            <entity-form-element [item]="item" [editableItem]="editableItem" [field]="field" [editableFields]="fields.editable"></entity-form-element>
+            <entity-form-element
+                    [item]="item"
+                    [editableItem]="editableItem"
+                    [field]="field"
+                    [editableFields]="fields.editable"
+                    [referencedEntitiesContents]="referencedEntitiesContents"
+            ></entity-form-element>
         </div>
 
     </div>

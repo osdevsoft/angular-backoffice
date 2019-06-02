@@ -24,6 +24,8 @@ export class DetailComponent implements OnInit {
     private referencedEntities:any = [];
     private referencedEntitiesWithField;
 
+    private referencedEntitiesContents: any = [];
+
     constructor(
         private activatedRoute: ActivatedRoute,
         private elementService: ElementService,
@@ -65,10 +67,10 @@ export class DetailComponent implements OnInit {
         if(
             domain_structure.entities[this.entity] !== undefined
             && domain_structure.entities[this.entity].fields !== undefined
-            && domain_structure.entities[this.entity].fields.inList !== undefined
+            && domain_structure.entities[this.entity].fields.inDetail !== undefined
         ) {
             let referencedEntitiesWithField:any = [];
-            domain_structure.entities[this.entity].fields.inList.forEach(
+            domain_structure.entities[this.entity].fields.inDetail.forEach(
                 function(listItem) {
                     if(listItem.indexOf(".") > 0) {
                         // this field to show in the list is from another entity
@@ -145,7 +147,11 @@ export class DetailComponent implements OnInit {
                         }
                     })
 
-                })
+                });
+
+                if (typeof data.referenced_entities_contents != "undefined") {
+                    this.referencedEntitiesContents = data.referenced_entities_contents;
+                }
 
 
                 this.loading = false;

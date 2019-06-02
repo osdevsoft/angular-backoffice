@@ -1,6 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 
+import {ElementService} from "../../services/element.service";
+
 import domain_structure from '../../../assets/config/domain_structure.json';
 
 
@@ -21,9 +23,11 @@ export class CreateComponent implements OnInit {
 
     private item:any = {};
     private fields:any = [];
+    private referencedEntitiesContents:any = [];
 
     constructor(
         private activatedRoute: ActivatedRoute,
+        private elementService: ElementService
     )
     {
         this.activatedRoute.params.subscribe(params => {
@@ -46,7 +50,23 @@ export class CreateComponent implements OnInit {
             // no editable fields
         }
 
-        this.loading = false;
+        let referencedEntitiesContents = '';
+        if(typeof domain_structure.entities[entity].referencedEntities != "undefined") {
+            let referencedEntities = domain_structure.entities[entity].referencedEntities;
+            this.elementService.getData(entity, 'fake-uuid', referencedEntities).subscribe(
+                (data: any) => {
+                    if (typeof data.referenced_entities_contents != "undefined") {
+                        referencedEntitiesContents = data.referenced_entities_contents;
+                    }
+
+                this.referencedEntitiesContents = referencedEntitiesContents;
+
+                this.loading = false;
+            });
+
+        } else {
+            this.loading = false;
+        }
 
 
     }

@@ -40,8 +40,7 @@
         ],
         "inList": [
           "title",
-          "author.name",
-          "content"
+          "author.name"
         ],
         "inDetail": [
           "title",
@@ -49,6 +48,7 @@
           "author.name"
         ],
         "editable": [
+          "title",
           "content",
           "author.name"
         ]
@@ -79,7 +79,10 @@
           "name",
           "email"
         ]
-      }
+      },
+      "referencedEntities": [
+        "post"
+      ]
     },
 
     "comment": {

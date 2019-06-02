@@ -79,7 +79,6 @@ export class RepositoryService {
 
     treatResponse(response)
     {
-        console.log(response);
     }
 
 }

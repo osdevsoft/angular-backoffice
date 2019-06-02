@@ -3,9 +3,21 @@
 </label>
 <br />
 
-<div [ngSwitch]="editableFields.indexOf(field)">
-
+<!--<div [ngSwitch]="editableFields.indexOf(field)">-->
+<div [ngSwitch]="field.includes('.')">
     <span *ngSwitchCase="-1">{{ item[field] }}</span>
+    <span *ngSwitchCase="true">
+        <select name="{{ field }}" #{{field}}="ngModel" [(ngModel)]="editableItem[field]">
+
+            <option
+                    *ngFor="let referencedEntityItem of referencedEntitiesContents[referencedEntity]"
+                    value="{{ referencedEntityItem.uuid }}"
+                    [selected]="referencedEntityItem.uuid == item['author_uuid']"
+            >{{ referencedEntityItem[referencedField] }}
+            </option>
+
+        </select>
+    </span>
 
     <input *ngSwitchDefault type="text" class="form-control" name="{{ field }}" placeholder="{{ field }}" #{{field}}="ngModel" [(ngModel)]="editableItem[field]">
 
